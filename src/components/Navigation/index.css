@@ -1,0 +1,10 @@
+.nav-item {
+  list-style: none;
+  @apply flex content-start;
+}
+
+.nav-link {
+  @apply p-4;
+}
+
+/*# sourceMappingURL=index.css.map */
