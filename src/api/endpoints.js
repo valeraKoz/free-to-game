@@ -1,19 +1,21 @@
 import {api} from "./api.js";
+import {getParams} from "../components/GamesFilter/utils.js";
 
 export const endpoints = api.injectEndpoints({
     endpoints: build => ({
-        getAllGames: build.query({
-            query: ()=>'games'
-        }),
-        getGamesByParams: build.query({
-            query: (params)=> `games${params}`
-        }),
         getGameById: build.query({
             query: (gameID)=> `game?id=${gameID}`
+        }),
+        getFilteredGames: build.query({
+            query: (params) => {
+                const {tag} = getParams(params);
+                return tag !== undefined ? `filter${params}` : `games${params}`
+
+            }
         })
     })
 })
 
 
 
-export const {useGetAllGamesQuery, useGetGamesByParamsQuery, useGetGameByIdQuery} = api;
+export const {useGetGameByIdQuery, useGetFilteredGamesQuery} = api;

@@ -9,7 +9,7 @@ const JPG_URL = (id,imgUrl) => imgUrl ? imgUrl : `https://www.freetogame.com/g/$
 const VIDEO_URL = (id) => `https://www.freetogame.com/g/${id}/videoplayback.webm`;
 
 export const GameImage = (props) => {
-    const {id , name, showVideo, imgUrl} = props;
+    const {id , name, showVideo, imgUrl, className: classes} = props;
     const videoRef = useRef(null);
     const loaderRef = useRef(null);
     const [isLoadingImage, setIsLoadingImage] = useState(true);
@@ -18,7 +18,7 @@ export const GameImage = (props) => {
     })
 
     return (
-        <div className='relative game-image min-h-40 group/image-wrapper'>
+        <div className={classes + ' relative game-image min-h-40 group/image-wrapper'}>
             {isLoadingImage ? <ImagePlaceholder/> : null}
             <LazyLoadImage
                 src={JPG_URL(id,imgUrl)}

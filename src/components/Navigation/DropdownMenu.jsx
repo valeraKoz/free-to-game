@@ -4,13 +4,19 @@ import {CATEGORY_GAMES} from "../../settings/settings.js";
 
 export const DropdownMenu = ({platform}) => {
 
+
     return (
         <ul className='dropdown-menu absolute group/edit invisible group-hover/item:visible top-14 rounded-lg bg-neutral-600 overflow-hidden left-0'>
             {
-                Object.keys(CATEGORY_GAMES).map((key,index) => {
+                Object.keys(CATEGORY_GAMES).map((category,index) => {
                     if(index<10)
-                    return(<li className='dropdown-menu__item hover:bg-neutral-800' key={key}>
-                        <NavLink className='block p-2 pl-5 pr-20 text-nowrap' to={`/filter?platform=${platform}&category=${key}`}>{CATEGORY_GAMES[key]}</NavLink>
+                    return(<li className='dropdown-menu__item hover:bg-neutral-800' key={category}>
+                        <NavLink
+                            className='block p-2 pl-5 pr-20 text-nowrap'
+                            to={`/filter?platform=${platform}&tag=${category}`}
+                        >
+                            {CATEGORY_GAMES[category]}
+                        </NavLink>
                     </li>)
                 })
 

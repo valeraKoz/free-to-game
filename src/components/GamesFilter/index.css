@@ -1,0 +1,15 @@
+.games-filter-form {
+  @apply flex w-full flex-col gap-8;
+}
+
+.filter-section {
+  @apply bg-neutral-800 rounded-lg shadow-md p-5;
+}
+.filter-section__title {
+  @apply mb-5;
+}
+.filter-section__item {
+  @apply flex gap-1;
+}
+
+/*# sourceMappingURL=index.css.map */
