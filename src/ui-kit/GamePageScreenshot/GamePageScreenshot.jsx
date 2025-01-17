@@ -6,9 +6,9 @@ export const GamePageScreenshot = (props) => {
     return (
         <section className="game-page-screenshot w-full">
             <h2 className='text-2xl font-bold'>Screenshots</h2>
-            <div className='flex gap-2 mt-3 w-full justify-between'>
+            <div className='flex gap-2 mt-3 w-full justify-between flex-wrap'>
                 {screenshots.map((screenshot, index)=>(
-                        <GameImage className='w-full' key={index} imgUrl={screenshot.image}/>
+                        <GameImage className='w-full lg:max-w-[49%]' key={index} imgUrl={screenshot.image}/>
                 ))}
             </div>
         </section>

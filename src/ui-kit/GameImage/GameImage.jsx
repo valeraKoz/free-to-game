@@ -22,7 +22,7 @@ export const GameImage = (props) => {
             {isLoadingImage ? <ImagePlaceholder/> : null}
             <LazyLoadImage
                 src={JPG_URL(id,imgUrl)}
-                className={isLoadingImage ? 'hidden' : ''}
+                className={`${isLoadingImage ? 'hidden' : ''} w-full`}
                 onLoad={()=>setIsLoadingImage(false)}
                 alt={name}
                 threshold={200}

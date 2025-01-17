@@ -1,13 +1,101 @@
 .games-filter-form{
-  @apply flex w-full flex-col gap-8
+  @apply hidden xl:flex xl:w-full xl:flex-col xl:gap-8
 }
 
 .filter-section{
-  @apply bg-neutral-800 rounded-lg shadow-md p-5;
+  @apply bg-neutral-800 rounded-lg shadow-md pb-5 pt-5;
   &__title{
-    @apply mb-5;
+    @apply mb-5 pl-5 pr-5;
+    &:after{
+      content: '';
+      display: block;
+      margin-top: 10px;
+      height: 1px;
+      width: 100%;
+      background-color: rgba(255,255,255,0.1);
+    }
   }
   &__item{
-    @apply flex gap-1
+    @apply flex justify-between items-center lg:hover:bg-amber-600
+  }
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar{
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.checkbox-input{
+  -webkit-appearance: none;
+  appearance: none;
+  -moz-appearance: none;
+  width: 1.15em;
+  height: 1.15em;
+  transform: translateY(-0.075em);
+  display: grid;
+  place-content: center;
+  background-image: none;
+}
+.checkbox-input::before{
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  transform: scale(0);
+  transform-origin: bottom left;
+  transition: 120ms transform ease-in-out;
+  background-color: CanvasText;
+}
+.checkbox-input:checked::before{
+  transform: scale(1);
+}
+
+.checkbox-input:checked + label{
+  @apply bg-amber-600;
+}
+
+// SORTED FORM
+
+.select{
+  &__container{
+    cursor: pointer;
+  }
+  &__title{
+    position: relative;
+    &:after{
+      content: '';
+      display: block;
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-bottom: 1px solid #fff;
+      border-right: 1px solid #fff;
+      right: 24px;
+      top: calc(50% - 3px);
+      transform: rotate(45deg);
+      transition: transform .2s;
+    }
+    &.active:after{
+      transform: rotate(-135deg);
+    }
+    &:hover{
+      @apply bg-amber-600;
+    }
+  }
+  &__body{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+  }
+  &__hidden{
+  }
+  &__item{
+    @apply pr-5 pl-5;
+    &:hover{
+      @apply bg-amber-600;
+    }
   }
 }

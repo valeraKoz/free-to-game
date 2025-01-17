@@ -6,14 +6,15 @@ import {Badge} from "../../ui-kit/Badge/Badge.jsx";
 import {PlatformIcon} from "../../ui-kit/PlatformIcon/PlatformIcon.jsx";
 import {GamePublisherFooterCard} from "../../ui-kit/GamePublisher/GamePublisherFooterCard.jsx";
 import {Link} from "react-router";
-import {useState} from "react";
+import {forwardRef, useState} from "react";
 
-export const GameCard = (props) => {
+export const GameCard = forwardRef((props,ref) => {
     const {game} = props;
     const [showVideo, setShowVideo] = useState(false);
 
     return (
         <Link to={`/game/${game.id}`}
+              ref={ref}
               onMouseEnter={()=>{setShowVideo(true)}}
               onMouseLeave={()=>{setShowVideo(false)}}
 
@@ -33,20 +34,9 @@ export const GameCard = (props) => {
             <GamePublisherFooterCard publisher={game.publisher} releaseDate={game['release_date']}/>
         </Link>
     )
-}
+});
 
 GameCard.propTypes = {
     game: PropTypes.object.isRequired
 }
 
-
-
-const isElementInViewport = (element) => {
-    const rect = element.getBoundingClientRect();
-    return (
-        rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );
-}

@@ -6,6 +6,7 @@ import {useState} from "react";
 import {GamePageDescription} from "../../ui-kit/GamePageDescription/GamePageDescription.jsx";
 import {GamePageSection} from "../../ui-kit/GamePageSection/GamePageSection.jsx";
 import {GamePageScreenshot} from "../../ui-kit/GamePageScreenshot/GamePageScreenshot.jsx";
+import {PageContainer} from "../../ui-kit/PageContainer/PageContainer.jsx";
 
 
 
@@ -15,11 +16,10 @@ export const GamePage = () => {
     const [showVideo, setShowVideo] = useState(false);
     const GAME_ID = useGetGameIdFromPathname();
     const {isLoading, data} = useGetGameByIdQuery(GAME_ID);
-    console.log(data);
 
     const renderGamePage = () => {
         return (
-            <div className="game-page__wrapper container grid grid-cols-[300px_minmax(900px,_1fr)]">
+            <div className="game-page__wrapper container flex flex-col gap-5 p-4 lg:grid lg:grid-cols-[300px_minmax(900px,_1fr)]">
                 <div className='game-page__left-bar'
                      onMouseEnter={()=>{setShowVideo(true)}}
                      onMouseLeave={()=>{setShowVideo(false)}}
@@ -33,7 +33,7 @@ export const GamePage = () => {
                         </a>
                     </div>
                 </div>
-                <div className='game-page__right-bar pl-10 flex flex-col gap-12'>
+                <div className='game-page__right-bar lg:pl-10 flex flex-col gap-12'>
                     <section>
                         <h2 className='text-4xl font-bold'>{data.title}</h2>
                         <GamePageDescription
@@ -49,7 +49,11 @@ export const GamePage = () => {
         )
     }
 
-    return isLoading ? 'Loading...' : renderGamePage()
+    return (
+        <PageContainer>
+            {isLoading ? 'Loading...' : renderGamePage()}
+        </PageContainer>
+    )
 }
 
 

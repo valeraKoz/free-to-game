@@ -42,6 +42,10 @@ class Filter{
         this.query_params.platform = checkPlatform(data);
         navigate('?'+this.getQueryParams())
     }
+    handleChangeSortBy(data,navigate){
+        this.query_params['sort-by'] = data;
+        navigate('?'+this.getQueryParams())
+    }
 }
 
 export const FILTER = new Filter(TAG_GAMES)

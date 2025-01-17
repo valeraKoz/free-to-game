@@ -1,11 +1,9 @@
 export const videoStart = (videoRef, url, loaderRef) =>{
     const loader = loaderRef.current;
     const video = videoRef.current;
-    console.log('Загрузка видео началась!');
     showLoader(loader);
     video.src = url;
     video.oncanplay = () => {
-        console.log('Убрать лоадер')
         hideLoader(loader);
     }
     video.load();
