@@ -36,6 +36,7 @@ export const GameCard = forwardRef((props,ref) => {
     )
 });
 
+GameCard.displayName = "GameCard";
 GameCard.propTypes = {
     game: PropTypes.object.isRequired
 }
